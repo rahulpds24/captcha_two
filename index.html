@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captcha Solver</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        img { max-width: 100%; height: auto; }
+        #captchaText { font-size: 24px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Captcha Solver</h1>
+    <div id="captchaContainer"></div>
+    <div id="captchaText"></div>
+    <script>
+        async function solveCaptcha(imageUrl) {
+            // Simulate captcha solving process
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve('Solved Text'); // Replace with actual solving logic
+                }, 15000);
+            });
+        }
+
+        function displayCaptcha(url) {
+            const captchaContainer = document.getElementById('captchaContainer');
+            const img = document.createElement('img');
+            img.src = url;
+            captchaContainer.appendChild(img);
+
+            solveCaptcha(url).then(solvedText => {
+                document.getElementById('captchaText').innerText = `Solved Captcha: ${solvedText}`;
+            });
+        }
+
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        const captchaUrl = getUrlParameter('url') || 'attachments/sample.png';
+        displayCaptcha(captchaUrl);
+    </script>
+</body>
+</html>

@@ -10,7 +10,10 @@ class CaptchaSolver:
 
     def fetch_captcha(self):
         response = requests.get(self.url)
-        return Image.open(BytesIO(response.content))
+        if response.status_code == 200:
+            return Image.open(BytesIO(response.content))
+        else:
+            raise Exception('Failed to fetch captcha')
 
     def solve_captcha(self):
         start_time = time.time()
@@ -22,5 +25,5 @@ class CaptchaSolver:
         return captcha_text.strip()
 
 # Example usage:
-# solver = CaptchaSolver('captcha_url')
+# solver = CaptchaSolver('CAPTCHA_URL_HERE')
 # print(solver.solve_captcha())

@@ -1,26 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Captcha Solver</title>
 </head>
 <body>
     <h1>Captcha Solver</h1>
-    <form id="captcha-form">
-        <label for="captcha-url">Captcha URL:</label>
-        <input type="text" id="captcha-url" name="captcha-url" required>
+    <form id="captchaForm">
+        <label for="captchaUrl">Enter Captcha URL:</label>
+        <input type="text" id="captchaUrl" name="captchaUrl" required>
         <button type="submit">Solve Captcha</button>
     </form>
     <div id="result"></div>
     <script>
-        document.getElementById('captcha-form').onsubmit = async function(event) {
+        document.getElementById('captchaForm').onsubmit = async function(event) {
             event.preventDefault();
-            const url = document.getElementById('captcha-url').value;
+            const url = document.getElementById('captchaUrl').value;
             const response = await fetch('/solve-captcha', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ url })
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({url})
             });
             const result = await response.json();
             document.getElementById('result').innerText = result.text;

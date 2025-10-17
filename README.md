@@ -1,10 +1,12 @@
 # Captcha Solver
 
-This project is a simple captcha solver that supports both PNG and SVG captcha images. It utilizes the Tesseract OCR engine to extract text from the images.
+## Overview
+This project provides a simple captcha solver that can handle both PNG and SVG captcha images. It uses OCR (Optical Character Recognition) to extract text from the images.
 
 ## Features
-- Supports solving captchas from both PNG and SVG formats.
-- Solves captcha within 15 seconds.
+- Supports both PNG and SVG captcha URLs.
+- Solves captchas within 15 seconds.
+- Displays solved captcha text.
 
 ## Installation
 1. Clone the repository.
@@ -12,7 +14,6 @@ This project is a simple captcha solver that supports both PNG and SVG captcha i
    ```bash
    pip install requests Pillow pytesseract
    ```
-3. Ensure Tesseract is installed on your system.
 
 ## Usage
 1. Create an instance of `CaptchaSolver` with the captcha URL.
